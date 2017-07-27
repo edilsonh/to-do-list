@@ -5,17 +5,25 @@
     <title>To-Do List</title>
   </head>
   <body>
-    <form class="" action="index.html" method="post">
-      <input type="text" name="" value="">
+    <form class="" action="/todo" method="post">
+      <input type="text" name="toDoItem" value="">
       <button type="submit" name="button">Add todo</button>
     </form>
     <section>
-      <button type="submit" name="button">Mark complete</button>
-      <span>sumsum</span>
+      <form action="/done" method="post">
+        {{#todo}}
+          <p>
+            <button type="submit" name="button">Mark complete</button>
+            <span>{{.}}</span>
+          </p>
+        {{/todo}}
+      </form>
     </section>
     <section>
       <h2>Completed tasks</h2>
-      <p>dondondon</p>
+
+        <p></p>
+
     </section>
 
   </body>
