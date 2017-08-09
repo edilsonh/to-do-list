@@ -2,21 +2,36 @@ const express = require("express");
 const router = express.Router();
 
 
-let todo = [];
-let doneItem = [];
+let todo = [
+  {
+    task: "Clean",
+    done: false
+  },
+  {
+    task: "Wash",
+    done: true
+  }
+];
 
 router.get("/", (req, res) => {
   res.render("index", {todo: todo})
 });
 
 router.post("/todo", (req, res) => {
-  console.log(req.body.toDoItem);
-  todo.push(req.body.toDoItem);
+  todo.push({
+    task: req.body.toDoItem,
+    done: false
+  });
   res.redirect("/");
 });
 
 router.post("/done", (req, res) => {
-  console.log(req.params);
+  todo.forEach(function(d) {
+    if(req.body.button === d.task) {
+      d.done = true;
+    }
+  })
+  res.redirect("/");
 })
 
 

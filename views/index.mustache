@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>To-Do List</title>
+    <link rel="stylesheet" href="public/style.css">
   </head>
   <body>
     <form class="" action="/todo" method="post">
@@ -12,18 +13,22 @@
     <section>
       <form action="/done" method="post">
         {{#todo}}
-          <p>
-            <button type="submit" name="button">Mark complete</button>
-            <span>{{.}}</span>
-          </p>
+          {{^done}}
+            <p>
+              <span>{{task}}</span>
+              <button type="submit" name="button" value="{{task}}">Mark Complete</button>
+            </p>
+          {{/done}}
         {{/todo}}
       </form>
     </section>
     <section>
       <h2>Completed tasks</h2>
-
-        <p></p>
-
+        {{#todo}}
+          {{#done}}
+            <p class="complete">{{task}}</p>
+          {{/done}}
+        {{/todo}}
     </section>
 
   </body>
